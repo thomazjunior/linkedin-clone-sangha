@@ -6,7 +6,7 @@ import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 function Widgets() {
 
     const newsArticle = (heading, subtitle) => (
-        <div className="widgets_article">
+        <div className="widgets__article">
             <div className="widgets__articleLeft">
                 <FiberManualRecordIcon />
             </div>
@@ -24,6 +24,17 @@ function Widgets() {
                 <InfoIcon />
             </div>
             {newsArticle("PAPA React is back", "Top news - 9099 readers")}
+            {newsArticle("PAPA React is back", "Top news - 9099 readers")}
+            {newsArticle("PAPA React is back", "Top news - 9099 readers")}
+            {newsArticle("PAPA React is back", "Top news - 9099 readers")}
+            {newsArticle("PAPA React is back", "Top news - 9099 readers")}
+            {newsArticle("PAPA React is back", "Top news - 9099 readers")}
+            {newsArticle("PAPA React is back", "Top news - 9099 readers")}
+            {newsArticle("PAPA React is back", "Top news - 9099 readers")}
+            {newsArticle("PAPA React is back", "Top news - 9099 readers")}
+            {newsArticle("PAPA React is back", "Top news - 9099 readers")}
+            {newsArticle("PAPA React is back", "Top news - 9099 readers")}
+            
         </div>
     );
 }
