@@ -15,14 +15,16 @@ function Feed() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    db.collection("posts").orderBy('timestamp', 'desc').onSnapshot((snapshot) =>
-      setPosts(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
-      )
-    );
+    db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
   }, []);
 
   const sendPost = (e) => {
@@ -45,7 +47,11 @@ function Feed() {
         <div className="feed__input">
           <CreatIcon />
           <form>
-            <input value={input} onChange={e => setInput (e.target.value)} type="text" />
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              type="text"
+            />
             <button onClick={sendPost} type="submit">
               Send
             </button>
@@ -63,8 +69,8 @@ function Feed() {
         </div>
       </div>
       {/**Posts */}
-      {posts.map(({id, data: {name, description, message, photoUrl } }) => (
-        <Post 
+      {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
+        <Post
           key={id}
           name={name}
           description={description}
@@ -72,8 +78,6 @@ function Feed() {
           photoUrl={photoUrl}
         />
       ))}
-
-     
     </div>
   );
 }

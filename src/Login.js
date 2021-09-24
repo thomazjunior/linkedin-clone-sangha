@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { auth } from "./firebase";
-import { useDispatch } from 'react-redux';
-import login from './features/userSlice';
+import { useDispatch } from "react-redux";
+import { login } from "./features/userSlice";
 import "./Login.css";
-
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -20,26 +19,21 @@ function Login() {
     if (!name) {
       return alert("Please, enter a full name!");
     }
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userAuth) => {
-        userAuth.user
-          .updateProfile({
-            displayName: name,
-            photoURL: profilePic,
-          })
-          .then(() => {
-            dispatch(
-              login({
-                email: userAuth.user.email,
-                uid: userAuth.user.uid,
-                displayName: name,
-                photoUr: profilePic,
-              })
-            );
-          });
-      })
-      .catch((error) => alert(error.message));
+
+    auth.createUserWithEmailAndPassword(email, password).then((userAuth) => {
+      userAuth.updateProfile({
+          displayName: name,
+          photoURL: profilePic,
+        })
+        .then(() => {
+          dispatch(login({
+            email: userAuth.email, 
+            uid: userAuth.uid,
+            displayName: name, 
+            photoURL: profilePic
+          }));
+        });
+    }).catch(error => alert(error));
   };
 
   return (
